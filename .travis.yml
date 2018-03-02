@@ -20,7 +20,7 @@ install:
     - conda create -q -n test-environment python=$PYVER pytest tk=8.5.*
     - conda install -n test-environment numpy>=1.13 libnetcdf expat
     - source activate test-environment
-    - cd Eigenstate/vmd-python && bash build.sh
+    - bash build.sh
 script:
     - source activate test-environment
     - python setup.py test
