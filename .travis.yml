@@ -9,15 +9,6 @@ os:
 osx_image: xcode-6.4
 
 before_install:
-    - |
-      echo ""
-      echo "Removing homebrew from Travis CI to avoid conflicts."
-      curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall > ~/uninstall_homebrew
-      chmod +x ~/uninstall_homebrew
-      ~/uninstall_homebrew -fq
-      rm ~/uninstall_homebrew
-
-install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then wget -O miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then wget -O miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh; fi
     - bash miniconda.sh -b -p $HOME/miniconda
@@ -29,6 +20,15 @@ install:
     - conda create -q -n test-environment python=$PYVER pytest tk=8.5.*
     - conda install -n test-environment numpy>=1.13 libnetcdf expat
     - source activate test-environment
+    - |
+      echo ""
+      echo "Removing homebrew from Travis CI to avoid conflicts."
+      curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall > ~/uninstall_homebrew
+      chmod +x ~/uninstall_homebrew
+      ~/uninstall_homebrew -fq
+      rm ~/uninstall_homebrew
+
+install:
     - bash build.sh
 script:
     - source activate test-environment
