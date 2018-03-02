@@ -11,6 +11,8 @@ xcode-select --print-path
 
 #echo "INSTALLING?"
 #xcode-select --install
+export CC="gcc"
+export CXX="g++"
 
 echo "CC IS: $(which cc)"
 echo "CLANG IS: $(which clang)"
