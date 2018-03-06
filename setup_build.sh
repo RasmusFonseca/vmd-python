@@ -45,3 +45,6 @@ conda install -n root --yes --quiet conda-build=2
 
 conda info
 conda config --get
+
+echo "BUILDING!"
+conda build-all ./recipes --matrix-condition "numpy >=1.11" "python >=2.7,<3|>=3.5" "r-base ==3.3.2|==3.4.1"
