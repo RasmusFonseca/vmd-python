@@ -26,6 +26,6 @@ conda config --add channels conda-forge
 conda config --set show_channel_urls true
 conda install --yes --quiet conda-build-all
 conda install --yes --quiet conda-forge-build-setup
-source run_conda_forge_build_setup
+source ~/miniconda/bin/run_conda_forge_build_setup
 
 
